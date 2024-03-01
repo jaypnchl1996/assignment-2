@@ -3,7 +3,6 @@ steps:
   args: ['build', '-t', 'us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/app:${COMMIT_SHA}', '.']
 images: ['us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/app:${COMMIT_SHA}']
 options:
-  machineType: N1_STANDARD_1
-  logging: REGIONAL
-  substitutionOption: ALLOW_LOOSE
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+  machineType: 'N1_STANDARD_1'
+  logging: 'REGIONAL'
+  substitutionOption: 'ALLOW_LOOSE'
