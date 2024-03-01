@@ -4,4 +4,4 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/scientific-air-405902/assignment-2/app:$COMMIT_SHA']
 options:
-  defaultLogsBucket: 'gs://scientific-air-405902_cloudbuild'
+  defaultLogsBucket: REGIONAL_USER_OWNED_BUCKET
