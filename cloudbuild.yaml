@@ -1,7 +1,11 @@
+# cloudbuild.yaml
 steps:
+# Build Docker image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/app:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/node-app:$COMMIT_SHA', '.']
+ 
+  # Push docker image to artifactory
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/app:$COMMIT_SHA']
+  args: ['push', 'us-central1-docker.pkg.dev/scientific-air-405902/panchal-100872799/node-app:$COMMIT_SHA']
 options:
-  substitutionOption: 'ALLOW_LOOSE'
+  defaultLogsBucketBehavior : REGIONAL_USER_OWNED_BUCKET
