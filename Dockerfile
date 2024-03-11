@@ -1,20 +1,26 @@
-# Use an official Node.js runtime as the base image
-FROM node:14
+# Use the node:19.7.0-alpine base image
+FROM node:19.7.0-alpine
 
-# Set the working directory in the container
-WORKDIR /src/
+# Set the environment variable NODE_ENV with a value of production
+ENV NODE_ENV=production
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Create a new directory in root called labone
+RUN mkdir /labone && chown node:node /labone
 
-# Install npm dependencies
+# Set the new folder as the working directory
+WORKDIR /labone
+
+# Set the user to node
+USER node
+
+# Copy all source files and change the file ownership to the node user and node group
+COPY --chown=node:node . .
+
+# Run the npm install command to install node.js packages
 RUN npm install
 
-# Copy the rest of the application source code to the working directory
-COPY . .
-
-# Expose the port the app runs on
+# Expose port 3000
 EXPOSE 3000
 
-# Command to run the application
-CMD ["node", "app.js"]
+# Set the default execution command to node src/index.js
+CMD ["node", "src/app.js"]
